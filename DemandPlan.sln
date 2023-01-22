@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33130.400
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemandPlan", "DemandPlan\DemandPlan.csproj", "{EE9824E2-1686-4E2B-A9E7-194A950ADBD5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE9824E2-1686-4E2B-A9E7-194A950ADBD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE9824E2-1686-4E2B-A9E7-194A950ADBD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE9824E2-1686-4E2B-A9E7-194A950ADBD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE9824E2-1686-4E2B-A9E7-194A950ADBD5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {61CF5C3F-7CA9-4995-A7B5-7D016204A7E5}
+	EndGlobalSection
+EndGlobal
