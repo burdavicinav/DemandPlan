@@ -52,12 +52,44 @@ namespace DemandPlan.models
 
         public ObservableCollection<Demand> GetByClient(string client)
         { 
-            return new ObservableCollection<Demand>(demands.Where(x => x.ClientName == client));
+            return new ObservableCollection<Demand>(demands.Where(x => x.ClientName.Contains(client)));
         }
 
         public ObservableCollection<Demand> GetByCity(string city)
         {
-            return new ObservableCollection<Demand>(demands.Where(x => x.City == city));
+            return new ObservableCollection<Demand>(demands.Where(x => x.City.Contains(city)));
+        }
+
+        public ObservableCollection<Demand> GetList(DemandFilter filter)
+        {
+            IEnumerable<Demand> _demands = demands;
+
+            if (filter.City != null)
+            {
+                _demands = _demands.Where(x => x.City.Contains(filter.City));
+            }
+
+            if (filter.Client != null)
+            {
+                _demands = _demands.Where(x => x.ClientName.Contains(filter.Client));
+            }
+
+            if (filter.IsShowEmptyDate)
+            {
+                _demands = _demands.Where(x => !x.Date.HasValue);
+            }
+
+            if (filter.StartDate.HasValue)
+            {
+                _demands = _demands.Where(x => x.Date >= filter.StartDate);
+            }
+
+            if (filter.EndDate.HasValue)
+            {
+                _demands = _demands.Where(x => x.Date <= filter.EndDate);
+            }
+
+            return new ObservableCollection<Demand>(_demands);
         }
 
         public void Add(Demand demand)

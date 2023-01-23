@@ -19,6 +19,8 @@ namespace DemandPlan.models
 
         ObservableCollection<Demand> GetByCity(string city);
 
+        ObservableCollection<Demand> GetList(DemandFilter filter);
+
         void Add(Demand demand);
 
         void Remove(Demand demand);

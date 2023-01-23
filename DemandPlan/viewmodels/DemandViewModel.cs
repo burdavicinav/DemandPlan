@@ -86,6 +86,8 @@ namespace DemandPlan.viewmodels
             }
         }
 
+        public DemandFilter DemandFilter { get; set; }
+
         public RelayCommand AddCommand { get; set; }
 
         public RelayCommand RemoveCommand { get; set; }
@@ -136,10 +138,14 @@ namespace DemandPlan.viewmodels
 
             FilterByCityCommand = new(o =>
             {
-                demands = demandRepo.GetByCity(o.ToString());
+                DemandFilter filter = o as DemandFilter;
+
+                demands = demandRepo.GetList(filter);
                 OnPropertyChanged("demands");
             }
             );
+
+            DemandFilter = new();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
