@@ -29,23 +29,32 @@ namespace DemandPlan.models
                     DemandDate obj = new()
                     {
                         City = $"city_{i + 1}",
-                        Date = startDate.AddDays(j),
-                        Count = (short)rnd.Next(1, 10)
+                        Date = startDate.AddDays(j)
                     };
+
+                    // интервалы времени
+                    int hour = 10;
+
+                    for (int k = 0; k < 5; k++)
+                    {
+                        hour += 2;
+
+                        DateTime startInterval = obj.Date.Date + TimeSpan.FromHours(hour);
+                        DateTime endInterval = obj.Date.Date + TimeSpan.FromHours(hour + 2);
+
+                        TimeInterval interval = new()
+                        {
+                            StartTime = startInterval,
+                            EndTime = endInterval,
+                            Count = (short)rnd.Next(1, 10)
+                        };
+
+                        obj.Intervals.Add(interval);
+                    }
 
                     calendar.Add(obj);
                 }
             }
-        }
-
-        public void CountDown(DemandDate obj)
-        {
-            obj.Count--;
-        }
-
-        public void CountUp(DemandDate obj)
-        {
-            obj.Count++;
         }
 
         public ObservableCollection<DemandDate> GetList(string city, short maxDays = 7)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -15,8 +16,6 @@ namespace DemandPlan.models
         private string city;
 
         private DateTime date;
-
-        private string interval;
 
         private short count;
 
@@ -48,6 +47,8 @@ namespace DemandPlan.models
             }
         }
 
+        public ObservableCollection<TimeInterval> Intervals { get; set; }
+
         public string DateStr
         {
             get
@@ -55,32 +56,25 @@ namespace DemandPlan.models
                 return date.ToString("dd.MM.yyyy");
             }
         }
-        public string Interval
-        {
-            get
-            {
-                return interval;
-            }
-
-            set
-            {
-                interval = value;
-                OnPropertyChanged("interval");
-            }
-        }
 
         public short Count
         {
             get
             {
+                count = 0;
+
+                foreach (TimeInterval interval in Intervals)
+                {
+                    count += interval.Count;
+                }
+
                 return count;
             }
+        }
 
-            set
-            {
-                count = value;
-                OnPropertyChanged("Count");
-            }
+        public DemandDate()
+        {
+            Intervals = new ObservableCollection<TimeInterval>();
         }
 
         public void OnPropertyChanged([CallerMemberName] string prop = "")

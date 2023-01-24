@@ -21,18 +21,6 @@ namespace DemandPlan.models
         ObservableCollection<DemandDate> GetList(string city, short maxDays = 7);
 
         /// <summary>
-        /// Увеличение количества замееров.
-        /// </summary>
-        /// <param name="obj"></param>
-        void CountUp(DemandDate obj);
-
-        /// <summary>
-        /// Уменьшение количества замеров.
-        /// </summary>
-        /// <param name="obj"></param>
-        void CountDown(DemandDate obj);
-
-        /// <summary>
         /// Возвращает объект в разрезе города на заданную дату.
         /// </summary>
         /// <param name="city">Город.</param>

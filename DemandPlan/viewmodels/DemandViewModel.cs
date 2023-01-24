@@ -22,13 +22,19 @@ namespace DemandPlan.viewmodels
 
         private DemandDate selectedDemandDate;
 
+        private TimeInterval selectedTimeInterval;
+
         private ObservableCollection<Demand> demands;
 
         private ObservableCollection<DemandDate> calendar;
 
+        private ObservableCollection<TimeInterval> intervals;
+
         public ObservableCollection<Demand> Demands => demands;
 
         public ObservableCollection<DemandDate> Calendar => calendar;
+
+        public ObservableCollection<TimeInterval> Intervals => intervals;
 
         public Demand SelectedDemand
         {
@@ -42,7 +48,10 @@ namespace DemandPlan.viewmodels
                 if (selectedDemand != null)
                 {
                     calendar = calendarRepo.GetList(value.City);
-                    OnPropertyChanged("calendar");
+                    OnPropertyChanged("Calendar");
+
+                    intervals = null;
+                    OnPropertyChanged("Intervals");
                 }
             }
         }
@@ -56,32 +65,48 @@ namespace DemandPlan.viewmodels
                 selectedDemandDate = value;
                 OnPropertyChanged("SelectedDemandDate");
 
-                if (selectedDemand != null && value != null)
+                if (selectedDemandDate != null && value != null)
                 {
-                    // если дата уже заполнена
-                    if (selectedDemand.Date.HasValue)
+                    intervals = selectedDemandDate.Intervals;
+                    OnPropertyChanged("Intervals");
+                }
+            }
+        }
+
+        public TimeInterval SelectedTimeInterval
+        {
+            get => selectedTimeInterval;
+
+            set
+            {
+                selectedTimeInterval = value;
+                OnPropertyChanged("SelectedTimeInterval");
+
+                if (selectedTimeInterval != null)
+                {
+                    if (selectedDemand.Date != null)
                     {
-                        DemandDate demandDate =
-                            calendarRepo.GetByCityOnDate(
-                                selectedDemand.City, selectedDemand.Date.Value);
+                        DemandDate demandDate = calendarRepo.GetByCityOnDate(selectedDemand.City, selectedDemand.Date.Value);
 
-                        // если дата не изменяется
-                        if (value.Date.Date == selectedDemand.Date.Value.Date)
+                        foreach (TimeInterval interval in demandDate.Intervals)
                         {
-                            return;
+                            if (interval.Period == selectedDemand.Interval)
+                            {
+                                interval.Count++;
+                            }
                         }
-
-                        // то количество замеров на старую дату увеличивается
-                        calendarRepo.CountUp(demandDate);
                     }
 
-                    selectedDemand.Date = value.Date;
+                    selectedDemand.Date = selectedTimeInterval.StartTime.Date;
+                    selectedDemand.Interval = selectedTimeInterval.Period;
 
-                    // количетсов замеров на дату уменьшается
-                    calendarRepo.CountDown(value);
-
-                    calendar = calendarRepo.GetList(value.City);
-                    OnPropertyChanged("calendar");
+                    if (selectedTimeInterval.Count > 0)
+                    {
+                        selectedTimeInterval.Count--;
+                    }
+                    
+                    calendar = calendarRepo.GetList(SelectedDemand.City);
+                    OnPropertyChanged("Calendar");
                 }
             }
         }
