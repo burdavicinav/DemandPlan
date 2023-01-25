@@ -1,8 +1,10 @@
-﻿using System;
+﻿using DemandPlan.exceptions;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace DemandPlan.models
@@ -23,7 +25,7 @@ namespace DemandPlan.models
 
                 int prefixIndex = rnd.Next(phonePrefixes.Length);
 
-                int phoneMainPart = rnd.Next(9999999);
+                int phoneMainPart = rnd.Next(1000000, 9999999);
 
                 // номер телефона
                 string phone = $"{8} {phonePrefixes[prefixIndex]} {phoneMainPart}";
@@ -94,6 +96,20 @@ namespace DemandPlan.models
 
         public void Add(Demand demand)
         {
+            // проверка формата номера заявки
+            if (demand.Num.Length != 6)
+            {
+                throw new DemandNumFormatException();
+            }
+
+            Regex phonePattern = new(@"^8 (499|903|905|962) \d{7}$");
+
+            // проверка формата номера телефона
+            if (!phonePattern.IsMatch(demand.Phone))
+            {
+                throw new DemandPhoneFormatException();
+            }
+
             demands.Add(demand);
         }
 
