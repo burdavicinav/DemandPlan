@@ -1,8 +1,8 @@
-﻿<Application x:Class="DemandPlan.App"
+﻿<Application x:Class="Maria.DemandPlan.UI.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:DemandPlan"
-             StartupUri="views\MainWindow.xaml">
+             xmlns:local="clr-namespace:Maria.DemandPlan.UI"
+             StartupUri="Views\MainWindow.xaml">
     <Application.Resources>
          
     </Application.Resources>

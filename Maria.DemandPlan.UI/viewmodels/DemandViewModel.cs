@@ -1,4 +1,4 @@
-﻿using DemandPlan.models;
+﻿using Maria.DemandPlan.UI.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,10 +7,10 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
-using DemandPlan.commands;
+using Maria.DemandPlan.UI.Commands;
 using System.Windows;
 
-namespace DemandPlan.viewmodels
+namespace Maria.DemandPlan.UI.ViewModels
 {
     public class DemandViewModel : INotifyPropertyChanged
     {

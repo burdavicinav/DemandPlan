@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace DemandPlan
+namespace Maria.DemandPlan.UI
 {
     /// <summary>
     /// Interaction logic for App.xaml

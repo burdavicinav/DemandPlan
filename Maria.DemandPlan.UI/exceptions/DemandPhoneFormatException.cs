@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DemandPlan.exceptions
+namespace Maria.DemandPlan.UI.Exceptions
 {
-    public class DemandNumFormatException : Exception
+    public class DemandPhoneFormatException : Exception
     {
         public override string Message
         {
             get
             {
-                return "Номер заявки должен быть в формате XXXXXX!";
+                return "Неверный формат номера телефона!";
             }
         }
     }

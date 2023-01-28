@@ -1,8 +1,8 @@
 using System;
 using Xunit;
 
-using DemandPlan.models;
-using DemandPlan.exceptions;
+using Maria.DemandPlan.UI.Models;
+using Maria.DemandPlan.UI.Exceptions;
 
 namespace DemandPlanTests
 {

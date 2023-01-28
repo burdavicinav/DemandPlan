@@ -1,11 +1,11 @@
-﻿using DemandPlan.models;
+﻿using Maria.DemandPlan.UI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DemandPlan
+namespace Maria.DemandPlan.UI
 {
     public static class RepoBuilder
     {

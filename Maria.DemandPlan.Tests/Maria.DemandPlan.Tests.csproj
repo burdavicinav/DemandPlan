@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DemandPlan\DemandPlan.csproj" />
+    <ProjectReference Include="..\Maria.DemandPlan.UI\Maria.DemandPlan.UI.csproj" />
   </ItemGroup>
 
 </Project>

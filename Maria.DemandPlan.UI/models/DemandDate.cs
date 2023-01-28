@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DemandPlan.models
+namespace Maria.DemandPlan.UI.Models
 {
     public class DemandDate : INotifyPropertyChanged
     {

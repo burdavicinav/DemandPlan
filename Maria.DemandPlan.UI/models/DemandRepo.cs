@@ -1,4 +1,4 @@
-﻿using DemandPlan.exceptions;
+﻿using Maria.DemandPlan.UI.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace DemandPlan.models
+namespace Maria.DemandPlan.UI.Models
 {
     public class DemandRepo : IDemandRepo
     {
