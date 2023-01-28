@@ -6,16 +6,10 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Maria.DemandPlan.UI.Models
+namespace Maria.DemandPlan.Models
 {
     public class TimeInterval : INotifyPropertyChanged
     {
-        private DateTime startTime;
-
-        private DateTime endTime;
-
-        private short count;
-
         public DateTime StartTime
         {
             get => startTime;
@@ -66,5 +60,11 @@ namespace Maria.DemandPlan.UI.Models
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
             }
         }
+
+        private DateTime startTime;
+
+        private DateTime endTime;
+
+        private short count;
     }
 }

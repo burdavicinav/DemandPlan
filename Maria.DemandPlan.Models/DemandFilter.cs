@@ -6,20 +6,10 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Maria.DemandPlan.UI.Models
+namespace Maria.DemandPlan.Models
 {
     public class DemandFilter : INotifyPropertyChanged
     {
-        private string city;
-
-        private string client;
-
-        private bool isShowEmptyDate;
-
-        private DateTime? startDate;
-
-        private DateTime? endDate;
-
         public string City
         {
             get => city;
@@ -84,5 +74,15 @@ namespace Maria.DemandPlan.UI.Models
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
             }
         }
+
+        private string city;
+
+        private string client;
+
+        private bool isShowEmptyDate;
+
+        private DateTime? startDate;
+
+        private DateTime? endDate;
     }
 }

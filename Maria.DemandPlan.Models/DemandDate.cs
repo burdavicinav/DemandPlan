@@ -7,17 +7,11 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Maria.DemandPlan.UI.Models
+namespace Maria.DemandPlan.Models
 {
     public class DemandDate : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-
-        private string city;
-
-        private DateTime date;
-
-        private short count;
 
         public string City
         {
@@ -84,5 +78,11 @@ namespace Maria.DemandPlan.UI.Models
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
             }
         }
+
+        private string city;
+
+        private DateTime date;
+
+        private short count;
     }
 }

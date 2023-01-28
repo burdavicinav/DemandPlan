@@ -1,4 +1,4 @@
-﻿using Maria.DemandPlan.UI.Exceptions;
+﻿using Maria.DemandPlan.Models.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,19 +7,17 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Maria.DemandPlan.UI.Models
+namespace Maria.DemandPlan.Models.Repo
 {
     public class DemandRepo : IDemandRepo
     {
-        private ObservableCollection<Demand> demands;
-
         public DemandRepo()
         {
             demands = new();
 
             for (int i = 0; i < 20; i++)
             {
-                Random rnd = new Random();
+                Random rnd = new();
 
                 int[] phonePrefixes = { 499, 903, 905, 962 };
 
@@ -127,5 +125,7 @@ namespace Maria.DemandPlan.UI.Models
         {
             demands.Clear();
         }
+
+        private ObservableCollection<Demand> demands;
     }
 }

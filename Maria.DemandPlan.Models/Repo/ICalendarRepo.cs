@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Maria.DemandPlan.UI.Models
+namespace Maria.DemandPlan.Models.Repo
 {
     /// <summary>
     /// Интерфейс для работы с календарем.

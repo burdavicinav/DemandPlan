@@ -1,19 +1,5 @@
-﻿using Maria.DemandPlan.UI.Models;
-using Maria.DemandPlan.UI.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Maria.DemandPlan.UI.ViewModels;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Maria.DemandPlan.UI.Views
 {
@@ -25,11 +11,8 @@ namespace Maria.DemandPlan.UI.Views
         public MainWindow()
         {
             InitializeComponent();
-
-            DataContext = new DemandViewModel(
-                RepoBuilder.DemandRepo,
-                RepoBuilder.CalendarRepo
-                );
+            
+            DataContext = new DemandViewModel();
         }
     }
 }

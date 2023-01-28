@@ -1,4 +1,5 @@
-﻿using Maria.DemandPlan.UI.Models;
+﻿using Maria.DemandPlan.Models;
+using Maria.DemandPlan.Models.Repo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,27 +10,12 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using Maria.DemandPlan.UI.Commands;
 using System.Windows;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Maria.DemandPlan.UI.ViewModels
 {
     public class DemandViewModel : INotifyPropertyChanged
     {
-        private IDemandRepo demandRepo;
-
-        private ICalendarRepo calendarRepo;
-
-        private Demand selectedDemand;
-
-        private DemandDate selectedDemandDate;
-
-        private TimeInterval selectedTimeInterval;
-
-        private ObservableCollection<Demand> demands;
-
-        private ObservableCollection<DemandDate> calendar;
-
-        private ObservableCollection<TimeInterval> intervals;
-
         public ObservableCollection<Demand> Demands => demands;
 
         public ObservableCollection<DemandDate> Calendar => calendar;
@@ -121,12 +107,14 @@ namespace Maria.DemandPlan.UI.ViewModels
 
         public RelayCommand FilterByCityCommand { get; set; }
 
-        public DemandViewModel(IDemandRepo demandRepo, ICalendarRepo calendarRepo)
+        public DemandViewModel()
         {
-            // репозитории
-            this.demandRepo = demandRepo;
+            ServiceProvider provider = Injection.Injection.Services
+                .BuildServiceProvider();
 
-            this.calendarRepo = calendarRepo;
+            // репозитории
+            demandRepo = provider.GetService<IDemandRepo>();
+            calendarRepo = provider.GetService<ICalendarRepo>();
 
             demands = demandRepo.GetList();
 
@@ -182,5 +170,21 @@ namespace Maria.DemandPlan.UI.ViewModels
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
             }
         }
+
+        private IDemandRepo demandRepo;
+
+        private ICalendarRepo calendarRepo;
+
+        private Demand selectedDemand;
+
+        private DemandDate selectedDemandDate;
+
+        private TimeInterval selectedTimeInterval;
+
+        private ObservableCollection<Demand> demands;
+
+        private ObservableCollection<DemandDate> calendar;
+
+        private ObservableCollection<TimeInterval> intervals;
     }
 }

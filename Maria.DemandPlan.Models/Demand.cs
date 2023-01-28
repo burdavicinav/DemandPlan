@@ -6,28 +6,13 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Maria.DemandPlan.UI.Models
+namespace Maria.DemandPlan.Models
 {
     /// <summary>
     /// Заявка на замер.
     /// </summary>
     public class Demand : INotifyPropertyChanged
     {
-
-        private string num;
-
-        private string clientName;
-
-        private string city;
-
-        private string address;
-
-        private string phone;
-
-        private string interval;
-
-        private DateTime? date;
-
         public Demand()
         {
         }
@@ -154,5 +139,19 @@ namespace Maria.DemandPlan.UI.Models
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
             }
         }
+
+        private string num;
+
+        private string clientName;
+
+        private string city;
+
+        private string address;
+
+        private string phone;
+
+        private string interval;
+
+        private DateTime? date;
     }
 }

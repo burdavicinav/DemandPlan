@@ -9,10 +9,6 @@ namespace Maria.DemandPlan.UI.Commands
 {
     public class RelayCommand : ICommand
     {
-        private Action<object> execute;
-
-        private Predicate<object> canExecute;
-
         public RelayCommand(Action<object> execute, Predicate<object> canExecute = null)
         {
             this.execute = execute;
@@ -34,5 +30,9 @@ namespace Maria.DemandPlan.UI.Commands
         {
             execute(parameter);
         }
+
+        private Action<object> execute;
+
+        private Predicate<object> canExecute;
     }
 }

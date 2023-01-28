@@ -5,12 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Maria.DemandPlan.UI.Models
+namespace Maria.DemandPlan.Models.Repo
 {
     public class CalendarRepo : ICalendarRepo
     {
-        private readonly ObservableCollection<DemandDate> calendar;
-
         public CalendarRepo()
         {
             // генерация данных
@@ -56,7 +54,6 @@ namespace Maria.DemandPlan.UI.Models
                 }
             }
         }
-
         public ObservableCollection<DemandDate> GetList(string city, short maxDays = 7)
         {
             // период
@@ -80,5 +77,7 @@ namespace Maria.DemandPlan.UI.Models
                     x.Date.Date == date.Date)
                 .FirstOrDefault();
         }
+
+        private readonly ObservableCollection<DemandDate> calendar;
     }
 }
