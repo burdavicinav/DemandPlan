@@ -1,9 +1,8 @@
-﻿using Maria.DemandPlan.BLL;
-using Maria.DemandPlan.Models.Repo;
+﻿using Maria.DemandPlan.Models.Repo;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace Maria.DemandPlan.Injection
+namespace Maria.DemandPlan.Models
 {
     public class Injection
     {
@@ -15,9 +14,7 @@ namespace Maria.DemandPlan.Injection
                 {
                     _services = new ServiceCollection()
                         .AddTransient<ICalendarRepo, CalendarRepo>()
-                        .AddTransient<IDemandRepo, DemandRepo>()
-                        .AddTransient<CalendarService>()
-                        .AddTransient<DemandService>();
+                        .AddTransient<IDemandRepo, DemandRepo>();
                 }
 
                 return _services;

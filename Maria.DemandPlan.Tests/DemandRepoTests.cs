@@ -35,7 +35,7 @@ namespace DemandPlanTests
         {
             demandRepo = new DemandRepo();
 
-            Demand demand = new Demand()
+            Demand demand = new()
             {
                 Num = "111111",
                 Phone = phone

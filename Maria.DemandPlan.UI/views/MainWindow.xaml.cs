@@ -1,4 +1,5 @@
-﻿using Maria.DemandPlan.UI.ViewModels;
+﻿using Maria.DemandPlan.BLL;
+using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
 
 namespace Maria.DemandPlan.UI.Views
@@ -11,8 +12,11 @@ namespace Maria.DemandPlan.UI.Views
         public MainWindow()
         {
             InitializeComponent();
-            
-            DataContext = new DemandViewModel();
+
+            ServiceProvider provider = 
+                Injection.Services.BuildServiceProvider();
+
+            DataContext = provider.GetService<IDemandViewModel>();
         }
     }
 }

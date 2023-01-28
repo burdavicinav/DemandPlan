@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maria.DemandPlan.Tests", "M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maria.DemandPlan.Models", "Maria.DemandPlan.Models\Maria.DemandPlan.Models.csproj", "{9175E9AA-1250-47D2-A088-79346C519926}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maria.DemandPlan.Injection", "Maria.DemandPlan.Injection\Maria.DemandPlan.Injection.csproj", "{E48F42E4-C339-4C7F-8D0A-ACF14091E263}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maria.DemandPlan.BLL", "Maria.DemandPlan.BLL\Maria.DemandPlan.BLL.csproj", "{D0D11747-446D-45BC-BB2C-1F21C703DDEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{9175E9AA-1250-47D2-A088-79346C519926}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9175E9AA-1250-47D2-A088-79346C519926}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9175E9AA-1250-47D2-A088-79346C519926}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E48F42E4-C339-4C7F-8D0A-ACF14091E263}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E48F42E4-C339-4C7F-8D0A-ACF14091E263}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E48F42E4-C339-4C7F-8D0A-ACF14091E263}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E48F42E4-C339-4C7F-8D0A-ACF14091E263}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0D11747-446D-45BC-BB2C-1F21C703DDEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0D11747-446D-45BC-BB2C-1F21C703DDEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0D11747-446D-45BC-BB2C-1F21C703DDEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0D11747-446D-45BC-BB2C-1F21C703DDEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Maria.DemandPlan.UI.Commands
+namespace Maria.DemandPlan.BLL.Commands
 {
     public class RelayCommand : ICommand
     {
@@ -31,8 +27,8 @@ namespace Maria.DemandPlan.UI.Commands
             execute(parameter);
         }
 
-        private Action<object> execute;
+        private readonly Action<object> execute;
 
-        private Predicate<object> canExecute;
+        private readonly Predicate<object> canExecute;
     }
 }

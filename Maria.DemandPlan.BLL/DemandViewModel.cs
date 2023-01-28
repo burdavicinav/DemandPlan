@@ -1,21 +1,22 @@
 ﻿using Maria.DemandPlan.Models;
 using Maria.DemandPlan.Models.Repo;
-using System;
-using System.Collections.Generic;
+using Maria.DemandPlan.BLL.Commands;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Collections.ObjectModel;
-using Maria.DemandPlan.UI.Commands;
-using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Maria.DemandPlan.UI.ViewModels
+namespace Maria.DemandPlan.BLL
 {
-    public class DemandViewModel : INotifyPropertyChanged
+    public class DemandViewModel : IDemandViewModel
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
+
         public ObservableCollection<Demand> Demands => demands;
 
         public ObservableCollection<DemandDate> Calendar => calendar;
@@ -99,18 +100,13 @@ namespace Maria.DemandPlan.UI.ViewModels
 
         public DemandFilter DemandFilter { get; set; }
 
-        public RelayCommand AddCommand { get; set; }
-
-        public RelayCommand RemoveCommand { get; set; }
-
         public RelayCommand ClearCommand { get; set; }
 
         public RelayCommand FilterByCityCommand { get; set; }
 
         public DemandViewModel()
         {
-            ServiceProvider provider = Injection.Injection.Services
-                .BuildServiceProvider();
+            ServiceProvider provider = Models.Injection.Services.BuildServiceProvider();
 
             // репозитории
             demandRepo = provider.GetService<IDemandRepo>();
@@ -119,36 +115,6 @@ namespace Maria.DemandPlan.UI.ViewModels
             demands = demandRepo.GetList();
 
             // команды
-            AddCommand = new(o =>
-            {
-                Demand demand = new()
-                {
-                    Num = "test123",
-                    ClientName = "cn1"
-                };
-
-                demandRepo.Add(demand);
-                SelectedDemand = demand;
-            });
-
-            RemoveCommand = new(o =>
-            {
-                Demand demand = o as Demand;
-
-                if (demand != null)
-                {
-                    demandRepo.Remove(demand);
-                }
-            },
-            (o => demandRepo.Count() > 0)
-            );
-
-            ClearCommand = new(o =>
-            {
-                demandRepo.Clear();
-            }
-            );
-
             FilterByCityCommand = new(o =>
             {
                 DemandFilter filter = o as DemandFilter;
@@ -161,19 +127,9 @@ namespace Maria.DemandPlan.UI.ViewModels
             DemandFilter = new();
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        private readonly IDemandRepo demandRepo;
 
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
-            }
-        }
-
-        private IDemandRepo demandRepo;
-
-        private ICalendarRepo calendarRepo;
+        private readonly ICalendarRepo calendarRepo;
 
         private Demand selectedDemand;
 
